@@ -1,12 +1,12 @@
 # SYNOPSIS
 
- [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ethereum/ethereumjs-lib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) or #ethereumjs on freenode
+ [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vapory/vaporyjs-lib?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) or #vaporyjs on freenode
 
-Implements schema and functions relating to accounts stored ethereum's state Trie   
-NOTE: this is different from [ethereumjs-accounts](https://github.com/SilentCicero/ethereumjs-accounts) which should be used if you want to key management and web3 sugar.
+Implements schema and functions relating to accounts stored vapory's state Trie   
+NOTE: this is different from [vaporyjs-accounts](https://github.com/SilentCicero/vaporyjs-accounts) which should be used if you want to key management and web3 sugar.
 
 # INSTALL
-`npm install ethereumjs-account`
+`npm install vaporyjs-account`
 
 # BROWSER
 This module work with `browserify`
@@ -76,12 +76,12 @@ Returns the account as JSON.
 
 #### `account.getCode(trie, cb)`
 Fetches the code from the trie.
-- `trie` - The [trie](https://github.com/ethereumjs/merkle-patricia-tree) storing the accounts.
+- `trie` - The [trie](https://github.com/vaporyjs/merkle-patricia-tree) storing the accounts.
 - `cb` - The callback.
 
 #### `account.setCode(trie, code, cb)`
 Stores the code in the trie.
-- `trie` - The [trie](https://github.com/ethereumjs/merkle-patricia-tree) storing the accounts.
+- `trie` - The [trie](https://github.com/vaporyjs/merkle-patricia-tree) storing the accounts.
 - `code` - A `Buffer`.
 - `cb` - The callback.
 

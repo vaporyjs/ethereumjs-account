@@ -1,5 +1,5 @@
-const ethUtil = require('ethereumjs-util')
-const rlp = require('rlp')
+const vapUtil = require('vaporyjs-util')
+const rlp = require('@vaporyjs/rlp')
 
 var Account = module.exports = function (data) {
   // Define Properties
@@ -12,14 +12,14 @@ var Account = module.exports = function (data) {
   }, {
     name: 'stateRoot',
     length: 32,
-    default: ethUtil.SHA3_RLP
+    default: vapUtil.SHA3_RLP
   }, {
     name: 'codeHash',
     length: 32,
-    default: ethUtil.SHA3_NULL
+    default: vapUtil.SHA3_NULL
   }]
 
-  ethUtil.defineProperties(this, fields, data)
+  vapUtil.defineProperties(this, fields, data)
 }
 
 Account.prototype.serialize = function () {
@@ -27,7 +27,7 @@ Account.prototype.serialize = function () {
 }
 
 Account.prototype.isContract = function () {
-  return this.codeHash.toString('hex') !== ethUtil.SHA3_NULL_S
+  return this.codeHash.toString('hex') !== vapUtil.SHA3_NULL_S
 }
 
 Account.prototype.getCode = function (state, cb) {
@@ -53,13 +53,13 @@ Account.prototype.setCode = function (trie, code, compiled, cb) {
 
   // store code for a new contract
   if (!compiled) {
-    this.codeHash = ethUtil.sha3(code)
+    this.codeHash = vapUtil.sha3(code)
   }
 
   // set the compile flag
   code = Buffer.concat([new Buffer([compiled]), code])
 
-  if (this.codeHash.toString('hex') === ethUtil.SHA3_NULL_S) {
+  if (this.codeHash.toString('hex') === vapUtil.SHA3_NULL_S) {
     cb(null, new Buffer([]))
     return
   }
@@ -89,6 +89,6 @@ Account.prototype.setStorage = function (trie, key, val, cb) {
 Account.prototype.isEmpty = function () {
   return this.balance.toString('hex') === '' &&
   this.nonce.toString('hex') === '' &&
-  this.stateRoot.toString('hex') === ethUtil.SHA3_RLP_S &&
-  this.codeHash.toString('hex') === ethUtil.SHA3_NULL_S
+  this.stateRoot.toString('hex') === vapUtil.SHA3_RLP_S &&
+  this.codeHash.toString('hex') === vapUtil.SHA3_NULL_S
 }

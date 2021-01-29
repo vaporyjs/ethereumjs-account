@@ -1,7 +1,7 @@
 const Account = require('../index.js')
-const rlp = require('rlp')
+const rlp = require('@vaporyjs/rlp')
 const tape = require('tape')
-const ethUtil = require('ethereumjs-util')
+const vapUtil = require('vaporyjs-util')
 
 tape('empty constructor', function (tester) {
   var it = tester.test
